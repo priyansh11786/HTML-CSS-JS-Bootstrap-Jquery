@@ -34,22 +34,98 @@
                                 class="fa fa-address-card fa-lg"></span>Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                    <a data-toggle="modal" id="clickModal">
                         <span class="fa fa-sign-in"></span> Login</a>
                 </span>
             </div>
         </div>
     </nav>
 
-    <div id="loginModal" class="modal fade" role="dialog">
+    <div id="reserveModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Login </h4>
+                    <h4 class="modal-title">Reserve a Table</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="firstname" class="col-md-2 col-form-label font-weight-bold">Number of
+                                Guests</label>
+                            <div class="col-md-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                        value="option1">
+                                    <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                        value="option2">
+                                    <label class="form-check-label" for="inlineCheckbox2">2</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                        value="option3">
+                                    <label class="form-check-label" for="inlineCheckbox3">3</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                        value="option3">
+                                    <label class="form-check-label" for="inlineCheckbox3">4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                        value="option3">
+                                    <label class="form-check-label" for="inlineCheckbox3">5</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                        value="option3">
+                                    <label class="form-check-label" for="inlineCheckbox3">6</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="section" class="col-12 col-md-2 col-form-label font-weight-bold">Section</label>
+                            <div class="col-md-5">
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button type="button" class="btn btn-danger">Non-smoking</button>
+                                    <button type="button" class="btn btn-success">Smoking</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="telnum" class="col-12 col-md-2 col-form-label font-weight-bold">Date and
+                                Time</label>
+                            <div class="col-5 col-md-4">
+                                <input type="tel" class="form-control" id="areacode" name="areacode" placeholder="Date">
+                            </div>
+                            <div class="col-5 col-md-4">
+                                <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Time">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="offset-md-2 col-md-10">
+                                <button type="submit" class="btn btn-primary">Reserve</button>
+                                <button type="submit" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header">
+                    <h4 class="modal-title">Login </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-sm-4">
@@ -93,9 +169,8 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
-                    <a role="button" class="btn btn-block nav-link btn-warning" data-toggle="tooltip" data-html="true"
-                        title="Or Call us at  <br><strong>+852 12345678</strong>" data-placement="bottom"
-                        href="#form-id">Reserve Table</a>
+                    <a role="button" id="clickReserve" class="btn btn-block nav-link btn-warning" data-toggle="modal">
+                        Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -155,6 +230,10 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span id="carousel-button-icon" class="fa fa-pause"></span>
+                    </button>
+
                 </div>
             </div>
         </div>
@@ -221,121 +300,55 @@
             </div>
         </div>
 
-        <div class="row row-content align-self-center">
-            <div class="col-sm-7 offset-md-2">
-                <div class="card">
-                    <h3 class="card-header bg-warning text-white">Reserve a table</h3>
-                    <div class="card-body">
-                        <form id="form-id">
-                            <div class="form-group row">
-                                <label for="firstname" class="col-md-2 col-form-label font-weight-bold">Number of
-                                    Guests</label>
-                                <div class="col-md-10">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                            value="option1">
-                                        <label class="form-check-label" for="inlineCheckbox1">1</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                            value="option2">
-                                        <label class="form-check-label" for="inlineCheckbox2">2</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                            value="option3">
-                                        <label class="form-check-label" for="inlineCheckbox3">3</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                            value="option3">
-                                        <label class="form-check-label" for="inlineCheckbox3">4</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                            value="option3">
-                                        <label class="form-check-label" for="inlineCheckbox3">5</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
-                                            value="option3">
-                                        <label class="form-check-label" for="inlineCheckbox3">6</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="telnum" class="col-12 col-md-2 col-form-label font-weight-bold">Date and
-                                    Time</label>
-                                <div class="col-5 col-md-4">
-                                    <input type="tel" class="form-control" id="areacode" name="areacode"
-                                        placeholder="Date">
-                                </div>
-                                <div class="col-5 col-md-4">
-                                    <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Time">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="offset-md-2 col-md-10">
-                                    <button type="submit" class="btn btn-primary">Reserve</button>
-                                </div>
-                            </div>
-                        </form>
+        <footer class="footer">
+            <div class="container">
+                <div class="row row-footer">
+                    <div class="col-4 offset-1 col-sm-2">
+                        <h5>Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Menu</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-7 col-sm-5">
+                        <h5>Our Address</h5>
+                        <address>
+                            121, Clear Water Bay Road<br>
+                            Clear Water Bay, Kowloon<br>
+                            HONG KONG<br>
+                            <i class="fa fa-phone fa-lg"></i>: +852 1234 5678<br>
+                            <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+                            <i class="fa fa-email fa-lg"></i>: <a
+                                href="mailto:confusion@food.net">confusion@food.net</a>
+                        </address>
+                    </div>
+                    <div class="col-12 col-sm-4 align-self-center">
+                        <div class="text-center">
+                            <a href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                            <a href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                            <a href="http://www.linkedin.com/in/"><i class="fa fa-linkdin"></i></a>
+                            <a href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            <a href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                            <a href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <p>© Copyright 2018 Ristorante Con Fusion</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </footer>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+        <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+        <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row row-footer">
-                <div class="col-4 offset-1 col-sm-2">
-                    <h5>Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Menu</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-7 col-sm-5">
-                    <h5>Our Address</h5>
-                    <address>
-                        121, Clear Water Bay Road<br>
-                        Clear Water Bay, Kowloon<br>
-                        HONG KONG<br>
-                        <i class="fa fa-phone fa-lg"></i>: +852 1234 5678<br>
-                        <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
-                        <i class="fa fa-email fa-lg"></i>: <a href="mailto:confusion@food.net">confusion@food.net</a>
-                    </address>
-                </div>
-                <div class="col-12 col-sm-4 align-self-center">
-                    <div class="text-center">
-                        <a href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
-                        <a href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
-                        <a href="http://www.linkedin.com/in/"><i class="fa fa-linkdin"></i></a>
-                        <a href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
-                        <a href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
-                        <a href="mailto:"><i class="fa fa-envelope-o"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                    <p>© Copyright 2018 Ristorante Con Fusion</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
-    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+        <script src="js/scripts.js"></script>
+
 
 </body>
 
